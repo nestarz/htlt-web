@@ -46,5 +46,8 @@ module.exports = {
   transform: rotate(10deg) skewX(20deg) scaleY(0.95) translateX(-10em)
     translateY(-10em);
   transform-origin: 0px 0px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
 }
 </style>
