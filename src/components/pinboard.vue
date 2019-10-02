@@ -1,26 +1,32 @@
 <template>
   <div class="pinboard">
     <div class="panel" ref="panel">
-      <component
-        v-bind:is="pin.type ? pin.type : 'div'"
-        :id="pin.id"
-        v-for="pin in pins"
-        :key="pin.id"
-        v-bind="pin"
-        v-dragged
-      >{{ pin.text }}</component>
+      <template v-for="pin in pins">
+        <component
+          v-if="pin.list && pin.type === 'img'"
+          v-for="item in pin.list"
+          v-bind:is="pin.type ? pin.type : 'div'"
+          :id="item"
+          :key="item"
+          :src="item"
+          v-dragged="{ unit: 'percent' }"
+          :style="`
+            top: ${Math.random() * 100}%; 
+            left: ${Math.random() * 100}%; 
+            z-index: ${Math.floor(Math.random() * pin.list.length)};
+            transform: translateX(-35mm) translateY(-35mm);
+          `"
+        ></component>
+        <component
+          v-else
+          v-bind:is="pin.type ? pin.type : 'div'"
+          :id="pin.id"
+          :key="pin.id"
+          v-bind="pin"
+          v-dragged="{ unit: 'percent' }"
+        >{{ pin.text }}</component>
+      </template>
       <slot />
-    </div>
-    <input ref="xy" @click="copy" type="textarea" :value="localStorage.positions" class="positions" />
-    <div class="zoom">
-      <input
-        type="range"
-        min="0.7"
-        max="2"
-        step="0.3"
-        v-bind:value="zoomRatio"
-        v-on:input="zoomSlider($event)"
-      />
     </div>
   </div>
 </template>
@@ -41,9 +47,10 @@ module.exports = {
     fetch(this.contentSrc)
       .then(response => response.json())
       .then(data => (this.pins = data));
-    fetch(this.positionSrc)
-      .then(response => response.json())
-      .then(data => (this.initialPositions = data));
+    if (this.positionSrc)
+      fetch(this.positionSrc)
+        .then(response => response.json())
+        .then(data => (this.initialPositions = data));
   },
   mounted() {},
   watch: {
@@ -73,14 +80,14 @@ module.exports = {
       document.execCommand("copy");
     },
     zoomSlider(e) {
-      this.$refs.panel.style.fontSize = e.target.value + "em";
+      this.$refs.panel.style.fontSize = e.target.value + "%";
     },
     position(positions) {
       Object.keys(positions).map(id => {
         const el = document.getElementById(id);
         if (el) {
-          el.style.top = positions[id].top + "em";
-          el.style.left = positions[id].left + "em";
+          el.style.top = positions[id].top + "%";
+          el.style.left = positions[id].left + "%";
           el.style.position = "absolute";
         }
       });
@@ -95,7 +102,6 @@ module.exports = {
 }
 
 .pinboard {
-  position: absolute;
   width: 100%;
   height: 100%;
 }
@@ -106,37 +112,13 @@ div {
 
 .panel * {
   cursor: pointer;
+  position: absolute;
 }
 
 .panel {
   position: relative;
-  font-size: 0.9em;
   height: 100%;
   width: 100%;
   overflow: scroll;
-  background-size: 10px 10px;
-  background-image: linear-gradient(
-      to right,
-      rgb(15, 15, 15) 1px,
-      transparent 1px
-    ),
-    linear-gradient(to bottom, rgb(15, 15, 15) 1px, transparent 1px);
-}
-
-.positions {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  width: 99.6%;
-  filter: invert(1);
-}
-
-.zoom {
-  position: absolute;
-  bottom: 30px;
-  right: 30px;
-  cursor: pointer;
-  color: #000;
 }
 </style>

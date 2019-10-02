@@ -1,2 +1,4 @@
 .DS_Store
 node_modules
+*fbi.json
+*fort8.json

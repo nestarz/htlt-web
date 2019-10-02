@@ -22,8 +22,8 @@ const onDragged = ({
     return;
   }
   const fontSize = parseFloat(window.getComputedStyle(el).fontSize);
-  el.style.left = parseFloat(el.style.left || 0) + deltaX / fontSize + unitMap[unit].x;
-  el.style.top = parseFloat(el.style.top || 0) + deltaY / fontSize + unitMap[unit].y;
+  el.style.left = parseFloat(el.style.left || 0) + deltaX / 6 + unitMap[unit].x;
+  el.style.top = parseFloat(el.style.top || 0) + deltaY / 7 + unitMap[unit].y;
   el.style.position = "absolute";
 
   var positions = JSON.parse(localStorage.positions || "{}");

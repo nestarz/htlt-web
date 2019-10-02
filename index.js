@@ -14,7 +14,7 @@ Vue.use(VueDrag);
 const router = new VueRouter({
   routes: [
     { path: "/", component: httpVueLoader("./src/pages/home.vue") },
-    { path: "/about/", component: httpVueLoader("./src/pages/about.vue") },
+    { path: "/a1/", component: httpVueLoader("./src/pages/a1.vue") },
   ]
 });
 
