@@ -2,7 +2,9 @@
   <div class="home">
     <div class="header">
       <box-layout>
+        <router-link to="time">
         <box v-dragged="{ unit: 'percent' }" v-for="i in 5" :key="i" :id="i"></box>
+        </router-link>
       </box-layout>
     </div>
   </div>

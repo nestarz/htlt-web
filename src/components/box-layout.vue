@@ -23,7 +23,7 @@ module.exports = {
   overflow: hidden;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 0fr 1fr;
   height: 100%;
 }
 
@@ -32,42 +32,42 @@ module.exports = {
   font-weight: bold;
 }
 
-.box-layout .top,
-.box-layout .bottom,
-.box-layout .right,
-.box-layout .left {
+.box-layout  > .top,
+.box-layout  > .bottom,
+.box-layout  > .right,
+.box-layout  > .left {
   display: flex;
   padding: 5em;
 }
 
-.box-layout .top {
+.box-layout > .top {
   align-items: flex-start;
 }
 
-.box-layout .bottom {
+.box-layout  > .bottom {
   align-items: flex-end;
 }
 
-.box-layout .right {
+.box-layout  > .right {
   justify-content: flex-end;
 }
 
-.box-layout .left {
+.box-layout >  .left {
   justify-content: flex-start;
   writing-mode: vertical-rl;
 }
 
-.box-layout .top.left {
+.box-layout  > .top.left {
   transform: rotate(180deg);
   justify-content: flex-end;
 }
 
-.box-layout .bottom.left {
+.box-layout  > .bottom.left {
   transform: rotate(180deg);
   align-items: baseline;
 }
 
-.box-layout .content {
+.box-layout  > .content {
   grid-column: span 2;
 }
 </style>
