@@ -2832,4 +2832,3 @@ if (inBrowser && window.Vue) {
 }
 
 export default VueRouter;
-//# sourceMappingURL=vue-router.esm.browser.js.map

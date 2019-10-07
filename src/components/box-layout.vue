@@ -1,7 +1,7 @@
 <template>
   <div class="box-layout">
     <router-link to="/" class="top left">htlt-tv</router-link>
-    <div class="top right">PLAY</div>
+    <div class="top right">oblidge to care about what is connected to us</div>
     <div class="content">
       <slot />
     </div>
@@ -12,15 +12,13 @@
 
 <script>
 module.exports = {
-  components: {
-  }
+  components: {}
 };
 </script>
 
 <style scoped>
 .box-layout {
   position: relative;
-  background: rgb(0, 0, 255);
   color: white;
   overflow: hidden;
   display: grid;
@@ -32,7 +30,6 @@ module.exports = {
 .box-layout a {
   color: white;
   font-weight: bold;
-  text-transform: uppercase;
 }
 
 .box-layout .top,
@@ -40,7 +37,7 @@ module.exports = {
 .box-layout .right,
 .box-layout .left {
   display: flex;
-  padding: 1em;
+  padding: 5em;
 }
 
 .box-layout .top {
@@ -57,6 +54,17 @@ module.exports = {
 
 .box-layout .left {
   justify-content: flex-start;
+  writing-mode: vertical-rl;
+}
+
+.box-layout .top.left {
+  transform: rotate(180deg);
+  justify-content: flex-end;
+}
+
+.box-layout .bottom.left {
+  transform: rotate(180deg);
+  align-items: baseline;
 }
 
 .box-layout .content {

@@ -14,7 +14,7 @@ export default {
             domProps: {
               innerHTML: this.$md.render(
                 this.$slots.default.reduce(
-                  (prev, curr) => prev.text + curr.text,
+                  (prev, curr) => (prev.text ? prev.text : '') + curr.text,
                   ""
                 )
               ) // tableau des enfants

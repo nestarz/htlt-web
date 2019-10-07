@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@swayable/vue-snarkdown": "^1.0.2",
+    "aframe": "^0.9.2",
     "botui": "^0.3.9",
     "face-api.js": "^0.21.0",
     "http-vue-loader": "^1.4.0",
@@ -31,12 +32,8 @@
       "http-vue-loader/src/httpVueLoader.js",
       "remarkable/dist/esm/index.browser.js",
       "typeit/dist/typeit.min.js",
-      "vue-beautiful-chat/dist/index.js",
-      "botui/build/botui.js",
-      "face-api.js/dist/face-api.min.js",
-      "oscilloscope/dist/oscilloscope.es.js",
       "vue-router/dist/vue-router.esm.browser.js",
-      "vue-marquee-text-component/dist/MarqueeText.common.js"
+      "aframe/dist/aframe-v0.9.2.min.js"
     ]
   }
 }

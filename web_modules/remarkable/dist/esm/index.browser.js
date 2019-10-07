@@ -5162,4 +5162,3 @@ Remarkable.prototype.renderInline = function (str, env) {
 };
 
 export { Remarkable, utils };
-//# sourceMappingURL=index.browser.js.map
